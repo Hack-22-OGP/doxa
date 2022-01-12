@@ -1,4 +1,5 @@
 export default {
+  target: 'static',
   srcDir: 'src/',
   configPath: '~~/tailwind.config.js',
   build: {
