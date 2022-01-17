@@ -3,6 +3,9 @@ export default {
   srcDir: 'src/',
   components: true,
   configPath: '~~/tailwind.config.js',
+  server: {
+    port: 3333, // default: 3000
+  },
   build: {
     postcss: {
       plugins: {
