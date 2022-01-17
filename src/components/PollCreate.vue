@@ -26,9 +26,16 @@
         </div>
       </div>
 
-      <button id="btn-add" @click.prevent="addOption">Add option</button>
+      <button
+        @click.prevent="addOption"
+        class="px-4 py-2 bg-blue-200 rounded-lg"
+      >
+        Add option
+      </button>
 
-      <button type="submit" id="btn-create">Create</button>
+      <button type="submit" class="rounded-lg py-2 px-4 bg-blue-200">
+        Create
+      </button>
     </form>
   </div>
 </template>
@@ -63,7 +70,7 @@ export default {
 
       if (poll.response && poll.response.id) {
         this.$router.push({
-          path: `poll/${poll.response.id}`,
+          path: `/poll/${poll.response.id}`,
         })
       }
     },
