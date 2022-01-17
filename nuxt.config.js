@@ -16,4 +16,11 @@ export default {
   },
   buildModules: ['@nuxt/postcss8'],
   css: ['./src/assets/css/tailwind.css'],
+  modules: ['@nuxtjs/axios'],
+  axios: {
+    baseURL:
+      process.env.NODE_ENV === 'production'
+        ? 'https://73l0w8qedc.execute-api.ap-southeast-1.amazonaws.com/dev/'
+        : 'http://localhost:3000/dev/',
+  },
 }
