@@ -4,11 +4,7 @@
 </template>
 
 <script>
-import PollCreate from '@/components/PollCreate.vue'
-import PollVote from '@/components/PollVote.vue'
-
 export default {
-  components: { PollCreate, PollVote },
   async asyncData({ params }) {
     return { id: params.id }
   },

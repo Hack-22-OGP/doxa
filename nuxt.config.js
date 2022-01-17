@@ -1,6 +1,7 @@
 export default {
   target: 'static',
   srcDir: 'src/',
+  components: true,
   configPath: '~~/tailwind.config.js',
   build: {
     postcss: {
