@@ -2,7 +2,7 @@
   <div
     class="flex items-center max-w-sm p-6 mx-auto bg-white shadow-md rounded-xl space-x-4"
   >
-    <form @submit.prevent="onSubmit">
+    <form v-if="!voted" @submit.prevent="onSubmit">
       <h1>{{ poll.title }}</h1>
 
       <div v-for="(option, id) in poll.options" :key="id">
@@ -21,6 +21,13 @@
         Vote
       </button>
     </form>
+
+    <div v-else>
+      <div v-for="(option, id) in poll.options" :key="id">
+        <span class="font-bold">{{ option.title }}</span> vote:
+        <span class="font-bold">{{ option.voteCount }}</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -28,24 +35,38 @@
 export default {
   data() {
     return {
+      voted: false,
       selection: null,
       poll: {},
     }
   },
   async mounted() {
-    const poll = await this.$axios.$get(`poll/${this.$route.params.id}`)
+    this.$axios.setToken('NRIC_HERE', 'Bearer')
 
-    if (poll.response && poll.response.id) {
-      this.poll = poll.response
-    }
+    await this._checkVote()
+    await this._getPoll()
   },
   methods: {
-    async onSubmit() {
-      this.$axios.setToken('NRIC_HERE', 'Bearer')
+    async _getPoll() {
+      const poll = await this.$axios.$get(`poll/${this.$route.params.id}`)
 
-      const poll = await this.$axios.$post(
-        `poll/${this.poll.id}/vote/${this.selection}`
+      if (poll.response && poll.response.id) {
+        this.poll = poll.response
+      }
+    },
+    async _checkVote() {
+      const voted = await this.$axios.$get(
+        `poll/${this.$route.params.id}/check-vote`
       )
+
+      if (voted.response && voted.response.status) {
+        this.voted = true
+      }
+    },
+    async onSubmit() {
+      const poll = await this.$axios.$post(`poll/${this.poll.id}/vote`, {
+        optionId: this.selection,
+      })
 
       if (poll.response && poll.response.id) {
         this.$router.push({
