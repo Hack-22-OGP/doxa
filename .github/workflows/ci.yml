@@ -2,8 +2,8 @@ name: Doxa CI
 
 on: push
 jobs:
-  Frontend-unit-tests:
-    name: Frontend Unit tests
+  frontend-unit-tests:
+    name: Unit Tests
     runs-on: ubuntu-latest
     steps:
       - name: Code Checkout
@@ -21,6 +21,24 @@ jobs:
           node-version: '16'
       - run: npm install
       - run: npm run test
+  frontend-deploy:
+    name: Deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        id: npm-cache
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Unit tests with jest
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: npm install
       - name: Build static site
         run: npm run generate
       - name: Configure AWS Credentials
