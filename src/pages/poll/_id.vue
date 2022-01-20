@@ -5,6 +5,7 @@
 
 <script>
 export default {
+  middleware: 'authenticate',
   async asyncData({ params }) {
     return { id: params.id }
   },

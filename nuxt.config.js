@@ -6,6 +6,12 @@ export default {
   server: {
     port: 3333, // default: 3000
   },
+  env: {
+    apiURL:
+      process.env.NODE_ENV === 'production'
+        ? 'https://73l0w8qedc.execute-api.ap-southeast-1.amazonaws.com/dev/'
+        : 'http://localhost:3000/dev/',
+  },
   build: {
     postcss: {
       plugins: {
