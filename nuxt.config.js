@@ -1,4 +1,5 @@
 export default {
+  mode: 'spa',
   target: 'static',
   srcDir: 'src/',
   components: true,

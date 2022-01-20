@@ -40,13 +40,13 @@ export default {
       poll: {},
     }
   },
-  async mounted() {
-    this.$axios.setToken('NRIC_HERE', 'Bearer')
-
+  async created() {
     await this._refreshPage()
   },
   methods: {
     async _refreshPage() {
+      this.$axios.setToken('NRIC_HERE', 'Bearer')
+
       await this._checkVote()
       await this._getPoll()
     },
