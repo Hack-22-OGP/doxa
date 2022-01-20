@@ -70,7 +70,7 @@ export default {
 
       if (poll.response && poll.response.id) {
         this.$router.push({
-          path: `poll/${poll.response.id}`,
+          path: `/poll/${poll.response.id}`,
         })
       }
     },
