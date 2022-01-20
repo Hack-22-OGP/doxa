@@ -4,6 +4,9 @@ export default {
   srcDir: 'src/',
   components: true,
   configPath: '~~/tailwind.config.js',
+  generate: {
+    fallback: '404.html',
+  },
   server: {
     port: 3333, // default: 3000
   },
