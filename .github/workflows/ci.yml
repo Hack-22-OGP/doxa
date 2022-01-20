@@ -2,7 +2,7 @@ name: Doxa CI
 
 on: push
 jobs:
-  frontend-unit-tests:
+  unit-tests:
     name: Unit Tests
     runs-on: ubuntu-latest
     steps:
@@ -21,9 +21,10 @@ jobs:
           node-version: '16'
       - run: npm install
       - run: npm run test
-  frontend-deploy:
+  deploy:
     name: Deployment
     runs-on: ubuntu-latest
+    needs: [unit-tests]
     steps:
       - name: Code Checkout
         uses: actions/checkout@v2
