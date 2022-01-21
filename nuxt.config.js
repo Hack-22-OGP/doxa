@@ -11,10 +11,14 @@ export default {
     port: 3333, // default: 3000
   },
   env: {
+    baseURL:
+      process.env.NODE_ENV === 'production'
+        ? 'http://doxa-fe.s3-website-ap-southeast-1.amazonaws.com'
+        : 'http://localhost:3333',
     apiURL:
       process.env.NODE_ENV === 'production'
-        ? 'https://73l0w8qedc.execute-api.ap-southeast-1.amazonaws.com/dev/api/'
-        : 'http://localhost:3000/dev/api/',
+        ? 'https://73l0w8qedc.execute-api.ap-southeast-1.amazonaws.com/dev/api'
+        : 'http://localhost:3000/dev/api',
   },
   build: {
     postcss: {
@@ -26,11 +30,11 @@ export default {
   },
   buildModules: ['@nuxt/postcss8'],
   css: ['./src/assets/css/tailwind.css'],
-  modules: ['@nuxtjs/axios'],
+  modules: ['@nuxtjs/axios', 'cookie-universal-nuxt'],
   axios: {
     baseURL:
       process.env.NODE_ENV === 'production'
-        ? 'https://73l0w8qedc.execute-api.ap-southeast-1.amazonaws.com/dev/api/'
-        : 'http://localhost:3000/dev/api/',
+        ? 'https://73l0w8qedc.execute-api.ap-southeast-1.amazonaws.com/dev/api'
+        : 'http://localhost:3000/dev/api',
   },
 }

@@ -1,5 +1,9 @@
-export default function ({ route, store, redirect }) {
-  // if (!store.state.user) {
-  //   return redirect(process.env.apiURL)
-  // }
+export default function ({ app, route, redirect }) {
+  const u = app.$cookies.get('u')
+
+  if (!u) {
+    return redirect(
+      `${process.env.apiURL}/auth?target=${process.env.baseURL}${route.fullPath}`
+    )
+  }
 }

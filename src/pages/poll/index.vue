@@ -54,6 +54,14 @@ export default {
       optionsCount: 2,
     }
   },
+  created() {
+    const u = this.$cookies.get('u')
+
+    if (u) {
+      this.$axios.setToken(u, 'Bearer')
+    }
+  },
+  middleware: ['authenticate'],
   methods: {
     addOption() {
       this.optionsCount++
@@ -66,7 +74,9 @@ export default {
       this.poll.options.splice(id, 1)
     },
     async onSubmit() {
-      const poll = await this.$axios.$post('poll', { ...this.poll })
+      this.$axios.setToken('NRIC_HERE', 'Bearer')
+
+      const poll = await this.$axios.$post('/poll', { ...this.poll })
 
       if (poll.response && poll.response.id) {
         this.$router.push({

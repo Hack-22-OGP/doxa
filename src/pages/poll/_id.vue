@@ -27,6 +27,8 @@
         <span class="font-bold">{{ option.title }}</span> vote:
         <span class="font-bold">{{ option.voteCount }}</span>
       </div>
+
+      <NuxtLink to="/poll" class="text-blue-400">Create a new Poll</NuxtLink>
     </div>
   </div>
 </template>
@@ -41,17 +43,22 @@ export default {
     }
   },
   async created() {
+    const u = this.$cookies.get('u')
+
+    if (u) {
+      this.$axios.setToken(u, 'Bearer')
+    }
+
     await this._refreshPage()
   },
+  middleware: ['authenticate'],
   methods: {
     async _refreshPage() {
-      this.$axios.setToken('NRIC_HERE', 'Bearer')
-
       await this._checkVote()
       await this._getPoll()
     },
     async _getPoll() {
-      const poll = await this.$axios.$get(`poll/${this.$route.params.id}`)
+      const poll = await this.$axios.$get(`/poll/${this.$route.params.id}`)
 
       if (poll.response && poll.response.id) {
         this.poll = poll.response
@@ -59,7 +66,7 @@ export default {
     },
     async _checkVote() {
       const voted = await this.$axios.$get(
-        `poll/${this.$route.params.id}/check-vote`
+        `/poll/${this.$route.params.id}/check-vote`
       )
 
       if (voted.response && voted.response.status) {
@@ -67,7 +74,7 @@ export default {
       }
     },
     async onSubmit() {
-      const poll = await this.$axios.$post(`poll/${this.poll.id}/vote`, {
+      const poll = await this.$axios.$post(`/poll/${this.poll.id}/vote`, {
         optionId: this.selection,
       })
 
