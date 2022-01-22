@@ -55,8 +55,6 @@ export default {
     }
   },
   created() {
-    this.$axios.setHeader('Content-Type', 'application/json')
-
     const u = this.$cookies.get('u')
 
     if (u) {
