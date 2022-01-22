@@ -18,7 +18,7 @@
 <script>
 export default {
   async asyncData({ $axios }) {
-    $axios.setToken('application/json', 'Content-Type')
+    $axios.setHeader('Content-Type', 'application/json')
 
     const polls = await $axios.$get('/poll')
 
