@@ -43,6 +43,8 @@ export default {
     }
   },
   async created() {
+    $axios.setToken('application/json', 'Content-Type')
+
     const u = this.$cookies.get('u')
 
     if (u) {
