@@ -18,6 +18,8 @@
 <script>
 export default {
   async asyncData({ $axios }) {
+    $axios.setToken('application/json', 'Content-Type')
+
     const polls = await $axios.$get('/poll')
 
     if (polls && polls.response) {
