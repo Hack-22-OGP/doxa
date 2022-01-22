@@ -43,7 +43,7 @@ export default {
     }
   },
   async created() {
-    $axios.setHeader('Content-Type', 'application/json')
+    this.$axios.setHeader('Content-Type', 'application/json')
 
     const u = this.$cookies.get('u')
 
