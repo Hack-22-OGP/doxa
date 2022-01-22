@@ -13,11 +13,11 @@ export default {
   env: {
     baseURL:
       process.env.NODE_ENV === 'production'
-        ? 'http://doxa-fe.s3-website-ap-southeast-1.amazonaws.com'
+        ? 'http://doxa.mindnaked.com'
         : 'http://localhost:3333',
     apiURL:
       process.env.NODE_ENV === 'production'
-        ? 'https://73l0w8qedc.execute-api.ap-southeast-1.amazonaws.com/dev/api'
+        ? 'https://api.mindnaked.com/dev/api'
         : 'http://localhost:3000/dev/api',
   },
   build: {
@@ -34,7 +34,7 @@ export default {
   axios: {
     baseURL:
       process.env.NODE_ENV === 'production'
-        ? 'https://73l0w8qedc.execute-api.ap-southeast-1.amazonaws.com/dev/api'
+        ? 'https://api.mindnaked.com/dev/api'
         : 'http://localhost:3000/dev/api',
   },
 }
