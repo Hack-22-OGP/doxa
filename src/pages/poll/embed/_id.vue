@@ -21,7 +21,12 @@
 export default {
   head() {
     return {
-      title: this.siteTitle,
+      link: [
+        {
+          rel: 'canonical',
+          href: this.siteUrl,
+        },
+      ],
       meta: [
         {
           hid: 'description',
@@ -29,9 +34,9 @@ export default {
           content: this.siteContent,
         },
         {
-          hid: 'og:url',
-          name: 'og:url',
-          content: this.siteUrl,
+          hid: 'ttle',
+          name: 'ttle',
+          content: this.siteTitle,
         },
         {
           hid: 'og:title',
@@ -44,10 +49,19 @@ export default {
           content: this.siteContent,
         },
         {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'website',
+        },
+        {
           hid: 'og:image',
           name: 'og:image',
-          content:
-            'https://image.shutterstock.com/shutterstock/photos/1188115291/display_1500/stock-vector-cute-green-frog-cartoon-character-isolated-on-white-background-1188115291.jpg',
+          content: this.siteImage,
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: this.siteUrl,
         },
       ],
     }
@@ -62,6 +76,9 @@ export default {
           return `${poll.title} (${poll.voteCount})`
         })
         .join('\n ')
+    },
+    siteImage: function () {
+      return `${this.$config.baseURL}/assets/img/banana.jpeg`
     },
     siteUrl: function () {
       return `${this.$config.baseURL}/poll/${this.$route.params.id}`

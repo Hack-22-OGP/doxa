@@ -38,7 +38,7 @@ export default {
         : 'http://localhost:3000/dev/api',
   },
   head: {
-    title: 'Doxa - Your opinion matters',
+    title: 'Doxa, your opinion counts! Literally.',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
