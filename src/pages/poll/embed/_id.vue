@@ -75,7 +75,7 @@ export default {
         .map((poll) => {
           return `${poll.title} (${poll.voteCount})`
         })
-        .join('\n ')
+        .join(' | ')
     },
     siteImage: function () {
       return `${this.$config.baseURL}/assets/img/banana.jpeg`
