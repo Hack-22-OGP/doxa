@@ -12,6 +12,15 @@
         poll.title
       }}</NuxtLink>
     </div>
+
+    <hr />
+    <h2>For Embeding polls</h2>
+    <div v-for="(poll, id) in polls" :key="id">
+      {{ id + 1 }}.
+      <NuxtLink :to="`/poll/embed/${poll.id}`" class="text-blue-400">{{
+        poll.title
+      }}</NuxtLink>
+    </div>
   </div>
 </template>
 

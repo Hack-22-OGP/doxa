@@ -9,7 +9,7 @@
           class="my-1"
           id="q"
           type="text"
-          placeholder="You poll questio here..."
+          placeholder="You poll question here..."
           v-model="poll.title"
         />
       </div>

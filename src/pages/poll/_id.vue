@@ -28,7 +28,7 @@
         <span class="font-bold">{{ option.voteCount }}</span>
       </div>
 
-      <NuxtLink to="/poll" class="text-blue-400">Create a new Poll</NuxtLink>
+      <NuxtLink to="/poll" class="text-blue-400">Create a new poll</NuxtLink>
     </div>
   </div>
 </template>
