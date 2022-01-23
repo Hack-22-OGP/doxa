@@ -14,7 +14,7 @@
       <br />
       <NuxtLink to="/poll" class="text-blue-400">Create a new poll</NuxtLink>
 
-      <!-- <img src="~/assets/img/banana.jpeg" /> -->
+      <img src="~/assets/img/banana.jpeg" />
     </div>
   </div>
 </template>
@@ -84,7 +84,7 @@ export default {
       return ''
     },
     siteImage: function () {
-      return `${this.$config.baseURL}/img/banana.jpeg`
+      return `~/assets/img/banana.jpeg`
     },
     siteUrl: function () {
       return `${this.$config.baseURL}/poll/${this.$route.params.id}`
