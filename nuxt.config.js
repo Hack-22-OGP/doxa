@@ -10,7 +10,7 @@ export default {
   server: {
     port: 3333, // default: 3000
   },
-  env: {
+  publicRuntimeConfig: {
     baseURL:
       process.env.NODE_ENV === 'production'
         ? 'http://doxa.mindnaked.com'
@@ -36,5 +36,12 @@ export default {
       process.env.NODE_ENV === 'production'
         ? 'https://api.mindnaked.com/dev/api'
         : 'http://localhost:3000/dev/api',
+  },
+  head: {
+    title: 'Doxa - Your opinion matters',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    ],
   },
 }

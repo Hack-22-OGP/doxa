@@ -74,8 +74,6 @@ export default {
       this.poll.options.splice(id, 1)
     },
     async onSubmit() {
-      this.$axios.setToken('NRIC_HERE', 'Bearer')
-
       const poll = await this.$axios.$post('/poll', { ...this.poll })
 
       if (poll.response && poll.response.id) {
