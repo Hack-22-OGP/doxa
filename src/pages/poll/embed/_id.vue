@@ -13,6 +13,8 @@
       >
       <br />
       <NuxtLink to="/poll" class="text-blue-400">Create a new poll</NuxtLink>
+
+      <!-- <img src="~/assets/img/banana.jpeg" /> -->
     </div>
   </div>
 </template>
@@ -71,14 +73,18 @@ export default {
       return `${this.poll.title} - Doxa`
     },
     siteContent: function () {
-      return this.poll.options
-        .map((poll) => {
-          return `${poll.title} (${poll.voteCount})`
-        })
-        .join(' | ')
+      if (this.poll.options) {
+        return this.poll.options
+          .map((poll) => {
+            return `${poll.title} (${poll.voteCount})`
+          })
+          .join(' | ')
+      }
+
+      return ''
     },
     siteImage: function () {
-      return `${this.$config.baseURL}/assets/img/banana.jpeg`
+      return `${this.$config.baseURL}/img/banana.jpeg`
     },
     siteUrl: function () {
       return `${this.$config.baseURL}/poll/${this.$route.params.id}`
