@@ -29,14 +29,24 @@ export default {
       ],
       meta: [
         {
+          hid: 'ttle',
+          name: 'ttle',
+          content: this.siteTitle,
+        },
+        {
           hid: 'description',
           name: 'description',
           content: this.siteContent,
         },
         {
-          hid: 'ttle',
-          name: 'ttle',
-          content: this.siteTitle,
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'website',
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: this.siteUrl,
         },
         {
           hid: 'og:title',
@@ -49,19 +59,9 @@ export default {
           content: this.siteContent,
         },
         {
-          hid: 'og:type',
-          property: 'og:type',
-          content: 'website',
-        },
-        {
           hid: 'og:image',
           name: 'og:image',
           content: this.siteImage,
-        },
-        {
-          hid: 'og:url',
-          name: 'og:url',
-          content: this.siteUrl,
         },
       ],
     }

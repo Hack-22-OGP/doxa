@@ -13,7 +13,7 @@ export default {
   publicRuntimeConfig: {
     baseURL:
       process.env.NODE_ENV === 'production'
-        ? 'http://doxa.mindnaked.com'
+        ? 'https://doxa.mindnaked.com'
         : 'http://localhost:3333',
     apiURL:
       process.env.NODE_ENV === 'production'
